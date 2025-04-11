@@ -5,15 +5,28 @@ const create = async ({email, password, username}) => {
         text: `
         INSER INTO users (email, password, username)
         VALUES ($1, $2, $3)
-        RETURNING *
+        RETURNING email,usermane, uid
         `,
         values: [email, password, username]
     }
 
     const {rows} = await db.query(query);
-    return rows;
+    return rows[0];
+}
+
+const findOneByEmail = async(email) =>{
+    const query = {
+        text:`
+        SELECT *FROM users
+        WHERE email = $1
+        `,
+        values: [email]
+    }
+    const {rows} = await db.query(query);
+    return rows[0];
 }
 
 export const UserModel = {
-    create
+    create,
+    findOneByEmail
 }
