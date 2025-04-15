@@ -3,9 +3,9 @@ import {db} from '../database/connection.database.js'
 const create = async ({email, password, username}) => {
     const query={
         text: `
-        INSER INTO users (email, password, username)
+        INSERT INTO users (email, password, username)
         VALUES ($1, $2, $3)
-        RETURNING email,usermane, uid
+        RETURNING email,usernam  e, uid
         `,
         values: [email, password, username]
     }
