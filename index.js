@@ -7,10 +7,6 @@ const app = express();
 
 app.use('/api/v1/users', userRouter)
 
-app.get('/', (req, res) => {
-    res.send('Hola loco');
-});
-
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => console.log('Servidor corriendo en puerto ' + PORT));
