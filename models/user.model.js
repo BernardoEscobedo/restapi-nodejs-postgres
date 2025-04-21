@@ -5,7 +5,7 @@ const create = async ({email, password, username}) => {
         text: `
         INSERT INTO users (email, password, username)
         VALUES ($1, $2, $3)
-        RETURNING email,usernam  e, uid
+        RETURNING email,username, uid
         `,
         values: [email, password, username]
     }
