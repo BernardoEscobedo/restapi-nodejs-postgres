@@ -3,7 +3,7 @@ import {UserModel} from '../models/user.model.js'
 // /api/v1/users/register
 const register = async(req,res) =>{
     try {
-        consoler.log(req.body)
+        console.log(req.body)
         const {username, email, password} = req.body
 
         return res.json({ ok:true, msg: "usuario registrado"})
