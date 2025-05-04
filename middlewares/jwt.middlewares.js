@@ -8,5 +8,20 @@ export const verifyToken = (req, res, next)=> {
         return res.status(401).json({error: "Sin token"});
     }
 
-    next()
+    console.log({token})
+
+    token = token.split(" ")[1]
+
+    console.log({token})
+    try {
+
+        const {email} = jwt.verify(token, process.env.JWT_SECRET)
+        console.log(email)
+        req.email = email
+
+        next()   
+    } catch (error) {
+        console.log(error)
+        return res.status(400).json({error: "token invalido"})
+    }
 }

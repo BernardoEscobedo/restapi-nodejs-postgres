@@ -95,8 +95,8 @@ const login = async(req,res) =>{
 const profile = async(req,res)=>{
     try {
         
-        //const user = await UserModel.findOneByEmail(email)
-        return res.json({ok:true})
+        const user = await UserModel.findOneByEmail(req.email)
+        return res.json({ok:true, msg: {email: user.email, username: user.username}})
 
     } catch (error) {
         console.log(error)
