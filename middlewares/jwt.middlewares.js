@@ -15,7 +15,7 @@ export const verifyToken = (req, res, next)=> {
     console.log({token})
     try {
 
-        const {email} = jwt.verify(token, process.env.JWT_SECRET)
+        const {email, role_id} = jwt.verify(token, process.env.JWT_SECRET)
         console.log(email)
         req.email = email
 
