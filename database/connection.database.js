@@ -5,14 +5,14 @@ const { Pool, Client } = pg;
 
 // Configuración para Render (usa las variables del entorno y conexión SSL)
 const db = new Pool({
-    host: process.env.PGHOST,
+    /*host: process.env.PGHOST,
     port: process.env.PGPORT,
     database: process.env.PGDATABASE,
     user: process.env.PGUSER,
     password: process.env.PGPASSWORD,
     ssl: {
         rejectUnauthorized: false, // IMPORTANTE para Render
-    },
+    },*/
     allowExitOnIdle: true,
 });
 
@@ -25,7 +25,8 @@ try {
 }
 
 // Client (opcional, si realmente lo usas en otro lado)
-const client = new Client({
+const client = new Client ();
+/*const client = new Client({
     host: process.env.PGHOST,
     port: process.env.PGPORT,
     database: process.env.PGDATABASE,
@@ -35,5 +36,5 @@ const client = new Client({
         rejectUnauthorized: false,
     },
 });
-
-export { db, client };
+*/
+export { db , client };

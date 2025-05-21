@@ -18,7 +18,7 @@ export const verifyToken = (req, res, next)=> {
         const {email, role_id} = jwt.verify(token, process.env.JWT_SECRET)
         console.log(email)
         req.email = email
-
+        req.role_id = role_id
         next()   
     } catch (error) {
         console.log(error)
