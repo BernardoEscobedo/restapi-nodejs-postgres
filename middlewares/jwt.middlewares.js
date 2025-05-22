@@ -25,3 +25,7 @@ export const verifyToken = (req, res, next)=> {
         return res.status(400).json({error: "token invalido"})
     }
 }
+
+export const verifyAdmin =()=>{
+    
+}
