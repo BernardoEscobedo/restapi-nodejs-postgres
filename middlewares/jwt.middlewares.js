@@ -26,9 +26,16 @@ export const verifyToken = (req, res, next)=> {
     }
 }
 
-export const verifyAdmin =(req, res, next)=>{
+export const verifyAdmin =(req, res, next)=>{//aqui se valida si el usuario es tipo admin
     if(req.role_id == 1){
-        return next()
+        return next()//si es admin se dirige a la siguiente funcion
     }
     return res.status(403).json({error: "No autorizado, solamente usuario administrador"})
+}
+
+export const verifyVet = (req, res, next) => {
+    if (req.role_id ==2 || req.role_id == 1){
+        return next()
+    }
+    return res.status(403).json({error: "Solamente usuario Veterinario"})
 }
