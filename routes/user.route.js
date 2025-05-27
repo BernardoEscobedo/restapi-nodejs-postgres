@@ -10,6 +10,6 @@ router.post('/login', UserController.login)
 router.get('/profile', verifyToken, UserController.profile)//ruta protegida
 
 //Rutas para admin
-router.get('/', verifyToken, verifyAdmin)
+router.get('/', verifyToken, verifyAdmin, UserController.findAll)
 
 export default router;
