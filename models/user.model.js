@@ -26,6 +26,17 @@ const findOneByEmail = async(email) =>{
     return rows[0];
 }
 
+const findAll = async ()=>{
+    const query = {
+        text:`
+        SELECT *FROM users
+        `,
+        values: [email]
+    }
+    const {rows} = await db.query(query);
+    return rows;
+}
+
 export const UserModel = {
     create,
     findOneByEmail

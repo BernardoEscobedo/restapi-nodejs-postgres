@@ -107,8 +107,23 @@ const profile = async(req,res)=>{
     }
 }
 
+const findAll = async(req, res)=>{
+    try {
+        const users = await UserModel.findAll()
+
+        return res.json({ok:true, msg: users})
+    } catch (error) {
+        console.log(error)
+        return res.status(500).json({
+            ok: false,
+            msg: 'Error en el servidor'
+        })
+    }
+}
+
 export const UserController={
     register,
     login,
-    profile
+    profile,
+    findAll
 }
