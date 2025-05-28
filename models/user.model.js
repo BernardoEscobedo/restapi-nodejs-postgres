@@ -30,8 +30,7 @@ const findAll = async ()=>{
     const query = {
         text:`
         SELECT *FROM users
-        `,
-        values: [email]
+        `
     }
     const {rows} = await db.query(query);
     return rows;
@@ -39,5 +38,6 @@ const findAll = async ()=>{
 
 export const UserModel = {
     create,
-    findOneByEmail
+    findOneByEmail,
+    findAll
 }
