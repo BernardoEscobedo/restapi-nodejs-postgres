@@ -36,8 +36,36 @@ const findAll = async ()=>{
     return rows;
 }
 
+const findOneByUid = async(uid) =>{
+    const query ={
+        text:`
+        SELECT *FROM users
+        WHERE uid = $1
+        `,
+        values: [uid]
+    }
+    const {rows} = await db.query(query)
+    return rows[0] //devolvemos solo el primer dato
+}
+
+const updateRoleVet = async(uid) =>{
+    const query ={
+        text:`
+        UPDATE users
+        SET role_id = 2
+        WHERE uid = $1
+        RETURNING *
+        `,
+        values: [uid]
+    }
+    const {rows} = await db.query(query)
+    return rows [0]
+}
+
 export const UserModel = {
     create,
     findOneByEmail,
-    findAll
+    findAll,
+    findOneByUid,
+    updateRoleVet
 }

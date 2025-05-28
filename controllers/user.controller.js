@@ -1,6 +1,7 @@
 import bcrypt from 'bcryptjs'
 import jwt from "jsonwebtoken"
 import {UserModel} from '../models/user.model.js'
+import { request } from 'express'
 
 // /api/v1/users/register
 const register = async(req,res) =>{
@@ -121,9 +122,35 @@ const findAll = async(req, res)=>{
     }
 }
 
+const updateRoleVet = async(req,res) => {
+    try {
+        const {uid} = req.params //aqui obtenemos el parametro de la ruta
+
+        const user = await UserModel.findOneByUid(uid)
+        if(!user){
+            return res.status(404).json({error:"Usuario no encontrado"})
+        }
+
+        const updateUser = await UserModel.updateRoleVet(uid)
+
+        return res.json({
+            ok: true,
+            msg: updateUser
+        })
+
+    } catch (error) {
+         console.log(error)
+        return res.status(500).json({
+            ok: false,
+            msg: 'Error en el servidor'
+        })
+    }
+}
+
 export const UserController={
     register,
     login,
     profile,
-    findAll
+    findAll,
+    updateRoleVet
 }

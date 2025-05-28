@@ -11,5 +11,6 @@ router.get('/profile', verifyToken, UserController.profile)//ruta protegida
 
 //Rutas para admin
 router.get('/', verifyToken, verifyAdmin, UserController.findAll)
+router.put('/update-role-vet/:uid', verifyToken, verifyAdmin, UserController.updateRoleVet)
 
 export default router;
