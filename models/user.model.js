@@ -45,7 +45,7 @@ const findOneByUid = async(uid) =>{
         values: [uid]
     }
     const {rows} = await db.query(query)
-    return rows[0] //devolvemos solo el primer dato
+    return rows[0] //devolvemos solo la primer fila como objeto
 }
 
 const updateRoleVet = async(uid) =>{
