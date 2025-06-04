@@ -24,7 +24,6 @@
         logout.addEventListener('click', ()=>{
             localStorage.removeItem('token')
             window.location.href = "/login"
-            return
         })
         axios.get('/api/v1/users/profile', {
             headers: {
